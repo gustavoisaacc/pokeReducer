@@ -35,7 +35,7 @@ export const pokemonsReducer = (state = initialValue, action) => {
         return false;
       });
 
-      return { ...state.pokemonSearch, pokemonSearch: filterPokemon };
+      return { ...state, pokemonSearch: filterPokemon };
 
     default:
       return state;

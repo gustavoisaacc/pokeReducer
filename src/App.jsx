@@ -11,6 +11,10 @@ import { Spin } from "antd";
 
 const App = () => {
   const pokemons = useSelector((state) => state.data.pokemons, shallowEqual);
+  const pokemonsSearch = useSelector(
+    (state) => state.data.pokemonSearch,
+    shallowEqual
+  );
   const loading = useSelector((state) => state.ui.loading);
   const dispatch = useDispatch();
 
@@ -33,7 +37,9 @@ const App = () => {
           <div className="content" />
         </Spin>
       ) : (
-        <PokemonList pokemons={pokemons} />
+        <PokemonList
+          pokemons={pokemonsSearch.length > 0 ? pokemonsSearch : pokemons}
+        />
       )}
     </div>
   );
