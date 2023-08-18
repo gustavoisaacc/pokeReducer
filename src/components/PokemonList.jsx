@@ -8,6 +8,7 @@ const PokemonList = ({ pokemons }) => {
           <PokemonCard
             name={pokemon.name}
             key={pokemon.name}
+            image={pokemon.sprites.other["official-artwork"].front_default}
             types={pokemon.types}
             id={pokemon.id}
             favorite={pokemon.favorite}
