@@ -16,14 +16,12 @@ export const pokemonsReducer = (state = initialValue, action) => {
         return pokemon.id === action.payload.pokemonId;
       });
 
-      if (currentPokemonIndex < 0) {
-        return state;
+      if (currentPokemonIndex >= 0) {
+        const isFavorite = newPokemonsList[currentPokemonIndex].favorite;
+        newPokemonsList[currentPokemonIndex].favorite = !isFavorite;
+        const p = { ...state, pokemons: newPokemonsList };
+        return { ...state, pokemonSearch: p };
       }
-
-      newPokemonsList[currentPokemonIndex].favorite =
-        !newPokemonsList[currentPokemonIndex].favorite;
-
-      return { ...state, pokemons: newPokemonsList };
 
     case SET_FILTER:
       const newPokemons = [...state.pokemons];
